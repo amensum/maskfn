@@ -22,6 +22,10 @@ $ yarn add maskfx
 ## Usage
 
 ```typescript
+import maskfx, { MaskfxMode } from "maskfx";
+
+// ...
+
 const [phone, setPhone] = useState("");
 
 const onChangePhone = (value: string) => {
