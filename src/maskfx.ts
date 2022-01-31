@@ -1,11 +1,11 @@
-import { MaskFn, MaskFnMode } from "./maskFn.types";
+import { Maskfx, MaskfxMode } from "./maskfx.types";
 
-const maskFn: MaskFn = ({
+const maskfx: Maskfx = ({
   mask,
   value,
   changedValue,
-  addMode = MaskFnMode.Lazy,
-  delMode = MaskFnMode.Fast,
+  addMode = MaskfxMode.Lazy,
+  delMode = MaskfxMode.Fast,
   digitSymbols = ["D"],
   charSymbols = ["C"],
   specialSymbols = ["+", "-", "(", ")", "{", "}"],
@@ -36,7 +36,7 @@ const maskFn: MaskFn = ({
   // Add symbols
   if (changedValue.length > value.length) {
     switch (addMode) {
-      case MaskFnMode.Fast:
+      case MaskfxMode.Fast:
         for (let i = 0; i < mask.length; i++) {
           if (i === changedValue.length) {
             if (digitSymbols.includes(mask[i])) {
@@ -51,7 +51,7 @@ const maskFn: MaskFn = ({
           }
         }
         break;
-      case MaskFnMode.Lazy:
+      case MaskfxMode.Lazy:
         for (let i = 0; i < mask.length; i++) {
           if (i === changedValue.length - 1) {
             if (digitSymbols.includes(mask[i])) {
@@ -72,7 +72,7 @@ const maskFn: MaskFn = ({
   // Del symbols
   if (changedValue.length < value.length) {
     switch (delMode) {
-      case MaskFnMode.Fast:
+      case MaskfxMode.Fast:
         for (let i = mask.length; i > 0; i--) {
           if (i === changedValue.length) {
             if (digitSymbols.includes(mask[i - 1])) {
@@ -87,7 +87,7 @@ const maskFn: MaskFn = ({
           }
         }
         break;
-      case MaskFnMode.Lazy:
+      case MaskfxMode.Lazy:
         for (let i = mask.length; i > 0; i--) {
           if (i === changedValue.length) {
             if (digitSymbols.includes(mask[i])) {
@@ -114,4 +114,4 @@ const maskFn: MaskFn = ({
   return false;
 };
 
-export default maskFn;
+export default maskfx;

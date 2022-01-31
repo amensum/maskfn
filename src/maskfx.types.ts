@@ -1,21 +1,21 @@
-export enum MaskFnMode {
+export enum MaskfxMode {
   None,
   Fast,
   Lazy,
 }
 
-export interface MaskFn {
-  (options: MaskFnOptions): string | false;
+export interface Maskfx {
+  (options: MaskfxOptions): string | false;
 }
 
-export interface MaskFnOptions {
+export interface MaskfxOptions {
   mask: string;
   value: string;
   changedValue: string;
 
   // optional
-  addMode?: MaskFnMode;
-  delMode?: MaskFnMode;
+  addMode?: MaskfxMode;
+  delMode?: MaskfxMode;
   digitSymbols?: string[];
   charSymbols?: string[];
   specialSymbols?: string[];

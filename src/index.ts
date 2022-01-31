@@ -1,5 +1,5 @@
-import maskFn from "./maskFn";
+import maskfx from "./maskfx";
 
-export * from "./maskFn.types";
+export * from "./maskfx.types";
 
-export default maskFn;
+export default maskfx;
