@@ -1,0 +1,17 @@
+{
+  "name": "maskfn",
+  "version": "0.1.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist"
+  ],
+  "author": "https://github.com/amensum",
+  "license": "ISC",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  }
+}
