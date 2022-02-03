@@ -31,14 +31,17 @@ const [phone, setPhone] = useState("");
 const onChangePhone = (value: string) => {
   const masked = maskfx({
     mask: "+7 (DDD) DDD-DD-DD",
-    value: phone,
-    changedValue: value,
+    value: value,
     addMode: MaskfxMode.Lazy,
     delMode: MaskfxMode.Fast,
   });
 
-  if (masked !== false) {
-    setPhone(masked);
+  if (value > phone && masked.forward !== false) {
+    setPhone(masked.forward);
+  }
+
+  if (value < phone && masked.backward !== false) {
+    setPhone(masked.backward);
   }
 };
 ```
