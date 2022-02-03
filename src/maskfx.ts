@@ -1,9 +1,8 @@
-import { Maskfx, MaskfxMode } from "./maskfx.types";
+import { Maskfx, MaskfxMode, MaskfxResult } from "./maskfx.types";
 
 const maskfx: Maskfx = ({
   mask,
   value,
-  changedValue,
   addMode = MaskfxMode.Lazy,
   delMode = MaskfxMode.Fast,
   digitSymbols = ["D"],
@@ -33,85 +32,90 @@ const maskfx: Maskfx = ({
     .replace(charRegular, "[a-zA-Z]");
   const valRegular = new RegExp(`^${valRule}$`);
 
-  // Add symbols
-  if (changedValue.length > value.length) {
-    switch (addMode) {
-      case MaskfxMode.Fast:
-        for (let i = 0; i < mask.length; i++) {
-          if (i === changedValue.length) {
-            if (digitSymbols.includes(mask[i])) {
-              continue;
-            }
-
-            if (charSymbols.includes(mask[i])) {
-              continue;
-            }
-
-            changedValue += mask[i];
+  let forward = value;
+  switch (addMode) {
+    case MaskfxMode.Fast:
+      for (let i = 0; i < mask.length; i++) {
+        if (i === forward.length) {
+          if (digitSymbols.includes(mask[i])) {
+            continue;
           }
-        }
-        break;
-      case MaskfxMode.Lazy:
-        for (let i = 0; i < mask.length; i++) {
-          if (i === changedValue.length - 1) {
-            if (digitSymbols.includes(mask[i])) {
-              continue;
-            }
 
-            if (charSymbols.includes(mask[i])) {
-              continue;
-            }
-
-            changedValue = changedValue.slice(0, i) + mask[i] + changedValue[i];
+          if (charSymbols.includes(mask[i])) {
+            continue;
           }
+
+          forward += mask[i];
         }
-        break;
-    }
+      }
+      break;
+    case MaskfxMode.Lazy:
+      for (let i = 0; i < mask.length; i++) {
+        if (i === forward.length - 1) {
+          if (digitSymbols.includes(mask[i])) {
+            continue;
+          }
+
+          if (charSymbols.includes(mask[i])) {
+            continue;
+          }
+
+          forward = forward.slice(0, i) + mask[i] + forward[i];
+        }
+      }
+      break;
   }
 
-  // Del symbols
-  if (changedValue.length < value.length) {
-    switch (delMode) {
-      case MaskfxMode.Fast:
-        for (let i = mask.length; i > 0; i--) {
-          if (i === changedValue.length) {
-            if (digitSymbols.includes(mask[i - 1])) {
-              continue;
-            }
-
-            if (charSymbols.includes(mask[i - 1])) {
-              continue;
-            }
-
-            changedValue = changedValue.slice(0, i - 1);
+  let backward = value;
+  switch (delMode) {
+    case MaskfxMode.Fast:
+      for (let i = mask.length; i > 0; i--) {
+        if (i === backward.length) {
+          if (digitSymbols.includes(mask[i - 1])) {
+            continue;
           }
-        }
-        break;
-      case MaskfxMode.Lazy:
-        for (let i = mask.length; i > 0; i--) {
-          if (i === changedValue.length) {
-            if (digitSymbols.includes(mask[i])) {
-              continue;
-            }
 
-            if (charSymbols.includes(mask[i])) {
-              continue;
-            }
-
-            changedValue = changedValue.slice(0, i - 1);
+          if (charSymbols.includes(mask[i - 1])) {
+            continue;
           }
+
+          backward = backward.slice(0, i - 1);
         }
-        break;
-    }
+      }
+      break;
+    case MaskfxMode.Lazy:
+      for (let i = mask.length; i > 0; i--) {
+        if (i === backward.length) {
+          if (digitSymbols.includes(mask[i])) {
+            continue;
+          }
+
+          if (charSymbols.includes(mask[i])) {
+            continue;
+          }
+
+          backward = backward.slice(0, i - 1);
+        }
+      }
+      break;
   }
 
-  const templated = changedValue + valTemplate.slice(changedValue.length);
+  const result: MaskfxResult = {
+    forward: false,
+    backward: false,
+  };
 
-  if (valRegular.test(templated)) {
-    return changedValue;
+  const forwardTemplated = forward + valTemplate.slice(forward.length);
+  if (valRegular.test(forwardTemplated)) {
+    result.forward = forward;
   }
 
-  return false;
+  const backwardTemplated = backward + valTemplate.slice(backward.length);
+  if (valRegular.test(backwardTemplated)) {
+    result.backward = backward;
+  }
+
+  return result;
 };
 
 export default maskfx;

@@ -5,13 +5,12 @@ export enum MaskfxMode {
 }
 
 export interface Maskfx {
-  (options: MaskfxOptions): string | false;
+  (options: MaskfxOptions): MaskfxResult;
 }
 
 export interface MaskfxOptions {
   mask: string;
   value: string;
-  changedValue: string;
 
   // optional
   addMode?: MaskfxMode;
@@ -19,4 +18,9 @@ export interface MaskfxOptions {
   digitSymbols?: string[];
   charSymbols?: string[];
   specialSymbols?: string[];
+}
+
+export interface MaskfxResult {
+  forward: string | false;
+  backward: string | false;
 }
