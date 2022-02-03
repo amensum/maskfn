@@ -32,15 +32,15 @@ const onChangePhone = (value: string) => {
   const masked = maskfx({
     mask: "+7 (DDD) DDD-DD-DD",
     value: value,
-    addMode: MaskfxMode.Lazy,
-    delMode: MaskfxMode.Fast,
+    addMode: MaskfxMode.Lazy, // optional
+    delMode: MaskfxMode.Fast, // optional
   });
 
-  if (value > phone && masked.forward !== false) {
+  if (value.length > phone.length && masked.forward !== false) {
     setPhone(masked.forward);
   }
 
-  if (value < phone && masked.backward !== false) {
+  if (value.length < phone.length && masked.backward !== false) {
     setPhone(masked.backward);
   }
 };
