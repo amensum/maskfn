@@ -1,4 +1,4 @@
-import { MaskfxPredict, MaskfxPredictMode, MaskfxValue } from "./types";
+import { MaskfxPredict, PredictMode, Value } from "./types";
 import check from "./maskfxCheck";
 
 const maskfxPredictBackward: MaskfxPredict = ({
@@ -7,12 +7,12 @@ const maskfxPredictBackward: MaskfxPredict = ({
   digitSymbols = ["D"],
   charSymbols = ["C"],
   specialSymbols = ["+", "-", "(", ")", "{", "}"],
-  mode = MaskfxPredictMode.Fast,
+  mode = PredictMode.Fast,
 }) => {
-  let backwardVal: MaskfxValue = value;
+  let backwardVal: Value = value;
 
   switch (mode) {
-    case MaskfxPredictMode.Fast:
+    case PredictMode.Fast:
       for (let i = mask.length; i > 0; i--) {
         if (i === backwardVal.length) {
           if (digitSymbols.includes(mask[i - 1])) {
@@ -27,7 +27,7 @@ const maskfxPredictBackward: MaskfxPredict = ({
         }
       }
       break;
-    case MaskfxPredictMode.Lazy:
+    case PredictMode.Lazy:
       for (let i = mask.length; i > 0; i--) {
         if (i === backwardVal.length) {
           if (digitSymbols.includes(mask[i])) {

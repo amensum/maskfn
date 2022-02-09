@@ -1,4 +1,4 @@
-import { MaskfxUnmask, MaskfxValue } from "./types";
+import { MaskfxUnmask, Value } from "./types";
 import check from "./maskfxCheck";
 
 const maskfxUnmask: MaskfxUnmask = ({
@@ -17,7 +17,7 @@ const maskfxUnmask: MaskfxUnmask = ({
   });
 
   if (checkResult) {
-    let unmaskedVal: MaskfxValue = "";
+    let unmaskedVal: Value = "";
 
     for (let i = 0; i < value.length; i++) {
       if (digitSymbols.includes(mask[i]) || charSymbols.includes(mask[i])) {

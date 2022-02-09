@@ -1,8 +1,8 @@
-export type MaskfxMask = string
+export type Mask = string
 
-export type MaskfxValue = string
+export type Value = string
 
-export enum MaskfxPredictMode {
+export enum PredictMode {
   Fast,
   Lazy,
 }
@@ -12,8 +12,8 @@ export interface MaskfxCheck {
 }
 
 export interface MaskfxCheckOptions {
-  mask: MaskfxMask;
-  value: MaskfxValue;
+  mask: Mask;
+  value: Value;
 
   // optional
   digitSymbols?: string[];
@@ -22,27 +22,41 @@ export interface MaskfxCheckOptions {
 }
 
 export interface MaskfxPredict {
-  (options: MaskfxPredictOptions): MaskfxValue | false;
+  (options: MaskfxPredictOptions): Value | false;
 }
 
 export interface MaskfxPredictOptions {
-  mask: MaskfxMask;
-  value: MaskfxValue;
+  mask: Mask;
+  value: Value;
 
   // optional
   digitSymbols?: string[];
   charSymbols?: string[];
   specialSymbols?: string[];
-  mode?: MaskfxPredictMode;
+  mode?: PredictMode;
+}
+
+export interface MaskfxMask {
+  (options: MaskfxMaskOptions): Value | false;
+}
+
+export interface MaskfxMaskOptions {
+  mask: Mask;
+  value: Value;
+
+  // optional
+  digitSymbols?: string[];
+  charSymbols?: string[];
+  specialSymbols?: string[];
 }
 
 export interface MaskfxUnmask {
-  (options: MaskfxUnmaskOptions): MaskfxValue | false;
+  (options: MaskfxUnmaskOptions): Value | false;
 }
 
 export interface MaskfxUnmaskOptions {
-  mask: MaskfxMask;
-  value: MaskfxValue;
+  mask: Mask;
+  value: Value;
 
   // optional
   digitSymbols?: string[];
