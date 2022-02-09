@@ -15,11 +15,7 @@ const maskfxPredictForward: MaskfxPredict = ({
     case PredictMode.Fast:
       for (let i = 0; i < mask.length; i++) {
         if (i === forwardVal.length) {
-          if (digitSymbols.includes(mask[i])) {
-            continue;
-          }
-
-          if (charSymbols.includes(mask[i])) {
+          if (digitSymbols.includes(mask[i]) || charSymbols.includes(mask[i])) {
             continue;
           }
 
@@ -30,11 +26,7 @@ const maskfxPredictForward: MaskfxPredict = ({
     case PredictMode.Lazy:
       for (let i = 0; i < mask.length; i++) {
         if (i === forwardVal.length - 1) {
-          if (digitSymbols.includes(mask[i])) {
-            continue;
-          }
-
-          if (charSymbols.includes(mask[i])) {
+          if (digitSymbols.includes(mask[i]) || charSymbols.includes(mask[i])) {
             continue;
           }
 
