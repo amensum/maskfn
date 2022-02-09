@@ -21,27 +21,8 @@ $ yarn add maskfx
 
 ## Usage
 
-```typescript
-import maskfx, { MaskfxMode } from "maskfx";
+```ts
+import * as maskfx from "maskfx";
 
-// ...
-
-const [phone, setPhone] = useState("");
-
-const onChangePhone = (value: string) => {
-  const masked = maskfx({
-    mask: "+7 (DDD) DDD-DD-DD",
-    value: value,
-    addMode: MaskfxMode.Lazy, // optional
-    delMode: MaskfxMode.Fast, // optional
-  });
-
-  if (value.length > phone.length && masked.forward !== false) {
-    setPhone(masked.forward);
-  }
-
-  if (value.length < phone.length && masked.backward !== false) {
-    setPhone(masked.backward);
-  }
-};
+// is coming...
 ```

@@ -1,5 +1,6 @@
-import maskfx from "./maskfx";
+export { default as check } from "./maskfxCheck";
+export { default as unmask } from "./maskfxUnmask";
+export { default as predictForward } from "./maskfxPredictForward";
+export { default as predictBackward } from "./maskfxPredictBackward";
 
-export * from "./maskfx.types";
-
-export default maskfx;
+export * from "./types";
