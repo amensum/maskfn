@@ -11,9 +11,9 @@ const maskfxPredictBackward: MaskfxPredict = ({
 }) => {
   const checkOptions = { mask, digitSymbols, charSymbols, specialSymbols };
 
-  if (!checkMasked({ ...checkOptions, value: value })) {
-    return false;
-  }
+  // if (!checkMasked({ ...checkOptions, value: value })) {
+  //   return false;
+  // }
 
   let backwardVal: Value = value;
 
