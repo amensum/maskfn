@@ -9,6 +9,12 @@ const maskfxPredictForward: MaskfxPredict = ({
   specialSymbols = ["+", "-", "(", ")", "{", "}"],
   mode = PredictMode.Lazy,
 }) => {
+  const checkOptions = { mask, digitSymbols, charSymbols, specialSymbols };
+
+  if (!checkMasked({ ...checkOptions, value: value })) {
+    return false;
+  }
+
   let forwardVal: Value = value;
 
   switch (mode) {
@@ -36,15 +42,11 @@ const maskfxPredictForward: MaskfxPredict = ({
       break;
   }
 
-  const checkResult = checkMasked({
-    mask,
-    value: forwardVal,
-    digitSymbols,
-    charSymbols,
-    specialSymbols,
-  });
+  if (!checkMasked({ ...checkOptions, value: forwardVal })) {
+    return false;
+  }
 
-  return checkResult ? forwardVal : false;
+  return forwardVal;
 };
 
 export default maskfxPredictForward;

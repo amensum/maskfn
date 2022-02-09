@@ -1,12 +1,15 @@
-import { MaskfxCheckUnmasked, Mask } from "./types";
+import { MaskfxCheck, Mask } from "./types";
 import checkMasked from "./maskfxCheckMasked";
 
-const maskfxCheckUnmasked: MaskfxCheckUnmasked = ({
+const maskfxCheckUnmasked: MaskfxCheck = ({
   mask,
   value,
   digitSymbols = ["D"],
   charSymbols = ["C"],
+  specialSymbols = ["+", "-", "(", ")", "{", "}"],
 }) => {
+  const checkOptions = { value, digitSymbols, charSymbols, specialSymbols };
+
   let maskAlt: Mask = "";
 
   for (let i = 0; i < mask.length; i++) {
@@ -15,7 +18,7 @@ const maskfxCheckUnmasked: MaskfxCheckUnmasked = ({
     }
   }
 
-  return checkMasked({ mask: maskAlt, value, digitSymbols, charSymbols });
+  return checkMasked({ ...checkOptions, mask: maskAlt });
 };
 
 export default maskfxCheckUnmasked;

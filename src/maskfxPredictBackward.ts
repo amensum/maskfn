@@ -9,6 +9,12 @@ const maskfxPredictBackward: MaskfxPredict = ({
   specialSymbols = ["+", "-", "(", ")", "{", "}"],
   mode = PredictMode.Fast,
 }) => {
+  const checkOptions = { mask, digitSymbols, charSymbols, specialSymbols };
+
+  if (!checkMasked({ ...checkOptions, value: value })) {
+    return false;
+  }
+
   let backwardVal: Value = value;
 
   switch (mode) {
@@ -37,15 +43,11 @@ const maskfxPredictBackward: MaskfxPredict = ({
       break;
   }
 
-  const checkResult = checkMasked({
-    mask,
-    value: backwardVal,
-    digitSymbols,
-    charSymbols,
-    specialSymbols,
-  });
+  if (!checkMasked({ ...checkOptions, value: backwardVal })) {
+    return false;
+  }
 
-  return checkResult ? backwardVal : false;
+  return backwardVal;
 };
 
 export default maskfxPredictBackward;
