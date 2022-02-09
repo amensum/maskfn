@@ -7,11 +7,11 @@ export enum PredictMode {
   Lazy,
 }
 
-export interface MaskfxCheck {
-  (options: MaskfxCheckOptions): boolean;
+export interface MaskfxCheckMasked {
+  (options: MaskfxCheckMaskedOptions): boolean;
 }
 
-export interface MaskfxCheckOptions {
+export interface MaskfxCheckMaskedOptions {
   mask: Mask;
   value: Value;
 
@@ -21,25 +21,24 @@ export interface MaskfxCheckOptions {
   specialSymbols?: string[];
 }
 
-export interface MaskfxMask {
-  (options: MaskfxMaskOptions): Value | false;
+export interface MaskfxCheckUnmasked {
+  (options: MaskfxCheckUnmaskedOptions): boolean;
 }
 
-export interface MaskfxMaskOptions {
+export interface MaskfxCheckUnmaskedOptions {
   mask: Mask;
   value: Value;
 
   // optional
   digitSymbols?: string[];
   charSymbols?: string[];
-  specialSymbols?: string[];
 }
 
-export interface MaskfxUnmask {
-  (options: MaskfxUnmaskOptions): Value | false;
+export interface MaskfxTransform {
+  (options: MaskfxTransformOptions): Value | false;
 }
 
-export interface MaskfxUnmaskOptions {
+export interface MaskfxTransformOptions {
   mask: Mask;
   value: Value;
 

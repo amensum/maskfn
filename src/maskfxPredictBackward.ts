@@ -1,5 +1,5 @@
 import { MaskfxPredict, PredictMode, Value } from "./types";
-import check from "./maskfxCheck";
+import checkMasked from "./maskfxCheckMasked";
 
 const maskfxPredictBackward: MaskfxPredict = ({
   mask,
@@ -15,7 +15,8 @@ const maskfxPredictBackward: MaskfxPredict = ({
     case PredictMode.Fast:
       for (let i = mask.length; i > 0; i--) {
         if (i === backwardVal.length) {
-          if (digitSymbols.includes(mask[i - 1]) || charSymbols.includes(mask[i - 1])) {
+          if (digitSymbols.includes(mask[i - 1]) ||
+            charSymbols.includes(mask[i - 1])) {
             continue;
           }
 
@@ -36,7 +37,7 @@ const maskfxPredictBackward: MaskfxPredict = ({
       break;
   }
 
-  const checkResult = check({
+  const checkResult = checkMasked({
     mask,
     value: backwardVal,
     digitSymbols,

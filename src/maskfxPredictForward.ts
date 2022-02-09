@@ -1,5 +1,5 @@
 import { MaskfxPredict, PredictMode, Value } from "./types";
-import check from "./maskfxCheck";
+import checkMasked from "./maskfxCheckMasked";
 
 const maskfxPredictForward: MaskfxPredict = ({
   mask,
@@ -36,7 +36,7 @@ const maskfxPredictForward: MaskfxPredict = ({
       break;
   }
 
-  const checkResult = check({
+  const checkResult = checkMasked({
     mask,
     value: forwardVal,
     digitSymbols,
