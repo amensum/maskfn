@@ -21,21 +21,6 @@ export interface MaskfxCheckOptions {
   specialSymbols?: string[];
 }
 
-export interface MaskfxPredict {
-  (options: MaskfxPredictOptions): Value | false;
-}
-
-export interface MaskfxPredictOptions {
-  mask: Mask;
-  value: Value;
-
-  // optional
-  digitSymbols?: string[];
-  charSymbols?: string[];
-  specialSymbols?: string[];
-  mode?: PredictMode;
-}
-
 export interface MaskfxMask {
   (options: MaskfxMaskOptions): Value | false;
 }
@@ -62,4 +47,19 @@ export interface MaskfxUnmaskOptions {
   digitSymbols?: string[];
   charSymbols?: string[];
   specialSymbols?: string[];
+}
+
+export interface MaskfxPredict {
+  (options: MaskfxPredictOptions): Value | false;
+}
+
+export interface MaskfxPredictOptions {
+  mask: Mask;
+  value: Value;
+
+  // optional
+  digitSymbols?: string[];
+  charSymbols?: string[];
+  specialSymbols?: string[];
+  mode?: PredictMode;
 }
