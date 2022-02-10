@@ -1,8 +1,8 @@
-export { default as checkMasked } from "./maskfxCheckMasked";
-export { default as checkUnmasked } from "./maskfxCheckUnmasked";
-export { default as transformMask } from "./maskfxTransformMask";
-export { default as transformUnmask } from "./maskfxTransformUnmask";
-export { default as predictForward } from "./maskfxPredictForward";
-export { default as predictBackward } from "./maskfxPredictBackward";
+export { default as checkMasked } from "./checkMasked";
+export { default as checkUnmasked } from "./checkUnmasked";
+export { default as transformMask } from "./transformMask";
+export { default as transformUnmask } from "./transformUnmask";
+export { default as predictForward } from "./predictForward";
+export { default as predictBackward } from "./predictBackward";
 
 export * from "./types";

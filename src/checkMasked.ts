@@ -1,6 +1,6 @@
 import { MaskfxCheck } from "./types";
 
-const maskfxCheckMasked: MaskfxCheck = ({
+const checkMasked: MaskfxCheck = ({
   mask,
   value,
   digitSymbols = ["D"],
@@ -33,4 +33,4 @@ const maskfxCheckMasked: MaskfxCheck = ({
   return maskRegular.test(value + maskTemplate.slice(value.length));
 };
 
-export default maskfxCheckMasked;
+export default checkMasked;

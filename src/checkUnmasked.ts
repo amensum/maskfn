@@ -1,7 +1,7 @@
 import { MaskfxCheck, Mask } from "./types";
-import checkMasked from "./maskfxCheckMasked";
+import checkMasked from "./checkMasked";
 
-const maskfxCheckUnmasked: MaskfxCheck = ({
+const checkUnmasked: MaskfxCheck = ({
   mask,
   value,
   digitSymbols = ["D"],
@@ -21,4 +21,4 @@ const maskfxCheckUnmasked: MaskfxCheck = ({
   return checkMasked({ ...checkOptions, mask: maskAlt });
 };
 
-export default maskfxCheckUnmasked;
+export default checkUnmasked;

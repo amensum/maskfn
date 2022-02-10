@@ -1,7 +1,7 @@
 import { MaskfxPredict, PredictMode, Value } from "./types";
-import checkMasked from "./maskfxCheckMasked";
+import checkMasked from "./checkMasked";
 
-const maskfxPredictForward: MaskfxPredict = ({
+const predictForward: MaskfxPredict = ({
   mask,
   value,
   digitSymbols = ["D"],
@@ -10,10 +10,6 @@ const maskfxPredictForward: MaskfxPredict = ({
   mode = PredictMode.Lazy,
 }) => {
   const checkOptions = { mask, digitSymbols, charSymbols, specialSymbols };
-
-  // if (!checkMasked({ ...checkOptions, value: value })) {
-  //   return false;
-  // }
 
   let forwardVal: Value = value;
 
@@ -49,4 +45,4 @@ const maskfxPredictForward: MaskfxPredict = ({
   return forwardVal;
 };
 
-export default maskfxPredictForward;
+export default predictForward;
