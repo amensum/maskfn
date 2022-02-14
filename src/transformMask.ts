@@ -25,10 +25,6 @@ const transformMask: TransformFn = ({
     }
   }
 
-  if (!checkMasked({ ...checkOptions, value: maskedVal })) {
-    return false;
-  }
-
   return maskedVal;
 };
 

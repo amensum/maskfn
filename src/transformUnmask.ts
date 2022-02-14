@@ -23,10 +23,6 @@ const transformUnmask: TransformFn = ({
     }
   }
 
-  if (!checkUnmasked({ ...checkOptions, value: unmaskedVal })) {
-    return false;
-  }
-
   return unmaskedVal;
 };
 
