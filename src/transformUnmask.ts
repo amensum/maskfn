@@ -1,6 +1,5 @@
 import { TransformFn, Value } from "./types";
 import checkMasked from "./checkMasked";
-import checkUnmasked from "./checkUnmasked";
 
 const transformUnmask: TransformFn = ({
   mask,
