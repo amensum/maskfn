@@ -86,7 +86,7 @@ describe("maskfx.predictForward()", () => {
           .toBe(expected);
       });
 
-      test("'+7 (999) 111-22-334' : false'", () => {
+      test("'+7 (999) 111-22-334' : false", () => {
         const value = maskfx.predictForward({
           mask,
           value: "+7 (999) 111-22-334",
@@ -99,7 +99,7 @@ describe("maskfx.predictForward()", () => {
           .toBe(expected);
       });
 
-      test("'+7 (999) 111-22-33w' : false'", () => {
+      test("'+7 (999) 111-22-33w' : false", () => {
         const value = maskfx.predictForward({
           mask,
           value: "+7 (999) 111-22-33w",
