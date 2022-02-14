@@ -1,7 +1,7 @@
-import { MaskfxCheck, Mask } from "./types";
+import { CheckFn, Mask } from "./types";
 import checkMasked from "./checkMasked";
 
-const checkUnmasked: MaskfxCheck = ({
+const checkUnmasked: CheckFn = ({
   mask,
   value,
   digitSymbols = ["D"],

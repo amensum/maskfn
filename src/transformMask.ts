@@ -1,8 +1,8 @@
-import { MaskfxTransform, Value } from "./types";
+import { TransformFn, Value } from "./types";
 import checkMasked from "./checkMasked";
 import checkUnmasked from "./checkUnmasked";
 
-const transformMask: MaskfxTransform = ({
+const transformMask: TransformFn = ({
   mask,
   value,
   digitSymbols = ["D"],

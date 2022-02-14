@@ -1,7 +1,7 @@
-import { MaskfxPredict, PredictMode, Value } from "./types";
+import { PredictFn, PredictMode, Value } from "./types";
 import checkMasked from "./checkMasked";
 
-const predictBackward: MaskfxPredict = ({
+const predictBackward: PredictFn = ({
   mask,
   value,
   digitSymbols = ["D"],

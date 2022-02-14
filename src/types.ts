@@ -7,11 +7,11 @@ export enum PredictMode {
   Lazy,
 }
 
-export interface MaskfxCheck {
-  (options: MaskfxCheckOptions): boolean;
+export interface CheckFn {
+  (options: CheckFnOptions): boolean;
 }
 
-export interface MaskfxCheckOptions {
+export interface CheckFnOptions {
   mask: Mask;
   value: Value;
 
@@ -21,11 +21,11 @@ export interface MaskfxCheckOptions {
   specialSymbols?: string[];
 }
 
-export interface MaskfxTransform {
-  (options: MaskfxTransformOptions): Value | false;
+export interface TransformFn {
+  (options: TransformFnOptions): Value | false;
 }
 
-export interface MaskfxTransformOptions {
+export interface TransformFnOptions {
   mask: Mask;
   value: Value;
 
@@ -35,11 +35,11 @@ export interface MaskfxTransformOptions {
   specialSymbols?: string[];
 }
 
-export interface MaskfxPredict {
-  (options: MaskfxPredictOptions): Value | false;
+export interface PredictFn {
+  (options: PredictFnOptions): Value | false;
 }
 
-export interface MaskfxPredictOptions {
+export interface PredictFnOptions {
   mask: Mask;
   value: Value;
 
