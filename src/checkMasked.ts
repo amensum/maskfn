@@ -21,16 +21,14 @@ const checkMasked: CheckFn = ({
   const digitRegular = new RegExp(digitRule, "g");
   const charRegular = new RegExp(charRule, "g");
 
-  const maskTemplate = mask
-    .replace(digitRegular, "7")
-    .replace(charRegular, "A");
   const maskRule = mask
+    .slice(0, value.length)
     .replace(specialRegular, "\\$&")
     .replace(digitRegular, "[0-9]")
     .replace(charRegular, "[a-zA-Z]");
   const maskRegular = new RegExp(`^${maskRule}$`);
 
-  return maskRegular.test(value + maskTemplate.slice(value.length));
+  return maskRegular.test(value);
 };
 
 export default checkMasked;
